@@ -1,15 +1,12 @@
-// import { createRoot } from "react-dom/client";
-// import App from "./App";
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import React from 'react';
 // 這支 CSS 檔的樣式會作用到全域
 import './styles.css';
 import App from './App';
-// import * as serviceWorker from './';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
-const rootElement = document.getElementById('root');
-// const root = createRoot(rootElement);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-ReactDom.render(<App />, rootElement);
+root.render(<App />);
 
-// serviceWorker.register();
+serviceWorkerRegistration.register();

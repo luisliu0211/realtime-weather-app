@@ -106,17 +106,17 @@ const WeatherSetting = ({ setCurrentPage, cityName, setCurrentCity }) => {
   const handleSave = () => {
     const locationName = inputLocationRef.current.value;
     if (locations.includes(locationName)) {
-      console.log(`儲存資料: ${locationName}`);
+      // console.log(`儲存資料: ${locationName}`);
       setCurrentPage('WeatherCard');
       setCurrentCity(locationName);
     } else {
-      console.log('查無所選地區');
+      // console.log('查無所選地區');
       alert(`儲存失敗！ 輸入的"${locationName}"並無可用資料`);
     }
     // 透過 inputLocationRef.current 可以指稱到該 input 元素
     // 透過 inputLocationRef.current.value 即可取得該 input 元素的值
 
-    console.log('ref 選取地區', locationName);
+    // console.log('ref 選取地區', locationName);
   };
   return (
     <WeatherSettingWrapper>
