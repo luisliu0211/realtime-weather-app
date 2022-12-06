@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
-import styled from "@emotion/styled";
-import { availableLocations } from "./utils";
+import React, { useState, useRef } from 'react';
+import styled from '@emotion/styled';
+import { availableLocations } from './utils';
 // STEP 2：從 availableLocations 取出 cityName 來做為讓使用者可以選擇地區的清單
 const locations = availableLocations.map((location) => location.cityName);
-// console.log("地點", locations);
+
+// console.log('地點', locations);
 
 const WeatherSettingWrapper = styled.div`
   position: relative;
@@ -99,23 +100,23 @@ const WeatherSetting = ({ setCurrentPage, cityName, setCurrentCity }) => {
   // STEP 2：使用 useRef 建立一個 ref，取名為 inputLocationRef
   const inputLocationRef = useRef(null);
   const handleChange = (e) => {
-    console.log("選擇地區", e.target.value);
+    // console.log('選擇地區', e.target.value);
     setLocationName(e.target.value);
   };
   const handleSave = () => {
     const locationName = inputLocationRef.current.value;
     if (locations.includes(locationName)) {
       console.log(`儲存資料: ${locationName}`);
-      setCurrentPage("WeatherCard");
+      setCurrentPage('WeatherCard');
       setCurrentCity(locationName);
     } else {
-      console.log("查無所選地區");
+      console.log('查無所選地區');
       alert(`儲存失敗！ 輸入的"${locationName}"並無可用資料`);
     }
     // 透過 inputLocationRef.current 可以指稱到該 input 元素
     // 透過 inputLocationRef.current.value 即可取得該 input 元素的值
 
-    console.log("ref 選取地區", locationName);
+    console.log('ref 選取地區', locationName);
   };
   return (
     <WeatherSettingWrapper>
@@ -129,17 +130,17 @@ const WeatherSetting = ({ setCurrentPage, cityName, setCurrentCity }) => {
         name="location"
         onChange={handleChange}
         ref={inputLocationRef}
-        defaultValue="臺北市"
+        defaultValue={cityName}
       />
       <datalist id="location-list">
-        {" "}
+        {' '}
         {locations.map((location) => (
           <option value={location} key={location} />
         ))}
       </datalist>
 
       <ButtonGroup>
-        <Back onClick={() => setCurrentPage("WeatherCard")}>返回</Back>
+        <Back onClick={() => setCurrentPage('WeatherCard')}>返回</Back>
         <Save onClick={handleSave}>儲存</Save>
       </ButtonGroup>
     </WeatherSettingWrapper>
